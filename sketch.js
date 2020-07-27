@@ -57,6 +57,7 @@ function draw(){
     
     Engine.update(engine);
     //strokeWeight(4);
+    console.log(bird.body.speed);
     box1.display();
     box2.display();
     ground.display();
@@ -93,7 +94,10 @@ function mouseReleased(){
 }
 
 function keyPressed(){
-    if(keyCode === 32){
+    
+    if(keyCode === 32 && bird.body.speed<1){
+       bird.trajectory=[];
+      Matter.Body.setPosition(bird.body,{x:200,y:50});
        slingshot.attach(bird.body);
     }
 }
